@@ -1,0 +1,62 @@
+<app-nav-comprador></app-nav-comprador>
+
+<div class="container-fluid">
+  <form [formGroup]="frmLongin" class="formulario">
+    <h2 class="text-center font-weight-bold">Inicia sesión</h2>
+    <div class="mb-3">
+      <label for="email" class="form-label">Nombre de usuario</label>
+      <input type="email" class="form-control" id="email" placeholder="Correo electrónico" formControlName="username">
+    </div>
+
+    <div>
+      <label for="email" class="form-label">Contraseña</label>
+      <div class="input-group align-items-center mb-3">
+        <input class="form-control" type="{{ mostrarContrasena ? 'text' : 'password' }}" id="password" formControlName="password">
+        <button class="btn btn-outline-secondary btn-sm" type="button" (click)="toggleMostrarContrasena()">
+          <span *ngIf="mostrarContrasena">
+            <i class="fas fa-eye"></i>
+          </span>
+          <span *ngIf="!mostrarContrasena">
+            <i class="fas fa-eye-slash"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+
+
+    <p><a href="recuperar_contraseña.html" class="mb-3 d-block text-center custom-link text-black">¿Has olvidado tu
+        contraseña?</a>
+    </p>
+    <div class="text-center">
+      <button type="submit" style="border-radius: 16px; background: #68548C; color: #FFF;" class="btn btn-block" (click)="login()">Iniciar
+        sesión</button>
+    </div>
+    <p class="text-center">¿No tienes cuenta? <a routerLink="/registro" class="custom-link text-black"><span>Crea
+          una</span></a></p>
+  </form>
+</div>
+<br>
+<app-footer></app-footer>
+
+
+<!-- <div class="card p-4 rounded-lg">
+    <form [formGroup]="frmLongin" class="formulario">
+        <h2 class="mb-4 text-center font-weight-bold" style="color: #20242C;">Inicia sesión</h2>
+        <fieldset>
+            <div class="form-group">
+                <label for="email" style="color: #20242C;">Nombre de usuario</label>
+                <input type="text" formControlName="username" class="form-control rounded_1" id="email" placeholder="nombre de usuario">
+            </div>
+            <div class="form-group">
+                <label for="password" style="color: #20242C;">Contraseña</label>
+                <input type="password" formControlName="password" class="form-control rounded_1" id="password"
+                    placeholder="Introduce tu contraseña">
+            </div>
+            <a href="#" class="mb-3 d-block text-center" id="link">¿Has olvidado tu contraseña?</a>
+            <button type="submit" style="border-radius: 16px; background: #68548C; color: #FFF;"
+                class="btn btn-block rounded-pill" (click)="login()">Iniciar sesión</button>
+                <button class="btn btn-block rounded-pill" (click)="cerrar()">cerrar</button>
+        </fieldset>
+    </form>
+    <p class="text-center mt-3" style="color: #20242C;">¿No tienes cuenta?<a routerLink="/registro" > Crea una</a></p>
+</div> -->

@@ -1,0 +1,86 @@
+<h2>Ofertas</h2>
+<div class="text-lg-right">
+    <button type="submit"
+            class="bi bi-plus-square btn btn-secondary" 
+            data-bs-toggle="modal" 
+            data-bs-target="#exampleModal">Agregar</button>
+</div>
+<br>
+<div class="table table-responsive">
+    <table class="table table-bordered  ">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descuento</th>
+                <th>Inicio de la oferta</th>
+                <th>Fin de la oferta</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let o of listOfertas">
+                <td>{{o.tipo_oferta}}</td>
+                <td>{{o.descuento}}</td>
+                <td>{{o.inicio_oferta}}</td>
+                <td>{{o.fin_oferta}}</td>
+                <td>
+                   
+                    <button type="submit"
+                    (click)="editar(o.id)"
+                    class="bi bi-plus-square btn btn-sm btn-warning" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#exampleModal">editar</button>
+                    <a class="btn btn-danger btn-sm bi m-1 bi-trash3" (click)="eliminar(o.id)">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar oferta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <form [formGroup]="frmOfreta">
+
+              <input type="text"
+              class="form-control m-2"
+              type="text"
+              placeholder="Nombre de la oferta"
+              formControlName="nombre"
+              >
+  
+              <input type="text"
+              class="form-control m-2"
+              type="number"
+              placeholder="Descuento"
+              formControlName="descuento"
+              >
+  
+              <input type="date"
+              class="form-control m-2"
+              formControlName="fecha_inicio"
+              >
+
+              <input type="date"
+              class="form-control m-2"
+              formControlName="fecha_fin"
+              >
+              <select class="form-select" formControlName="producto">
+                <option *ngFor="let p of listProductos" value="{{p.id}}">{{p.nombre}}</option>
+              </select>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" *ngIf="!bandera" (click)="guardar()" >Guardar Oferta</button>
+            <button type="button" class="btn btn-primary" *ngIf="bandera" (click)="actualizar()" >editar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

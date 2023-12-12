@@ -1,0 +1,56 @@
+<div style="height:45%;">
+  <h2 class="text-center">Categorias</h2>
+  <div class="d-flex justify-content-end">
+    <button type="submit" class=" btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal-categoria"
+      style="height: 35;">
+      Agregar
+      <i class="fa-solid fa-layer-group"></i>
+    </button>
+  </div>
+  <br>
+  <div class="table table-responsive">
+    <table class="table table-bordered  ">
+      <thead>
+        <tr>
+          <th>Nombre de la categoria</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let o of listCategorias">
+          <td>{{o.descripcion}}</td>
+         
+          <td>
+            <button type="submit" (click)="editar(o.id)" class="bi bi-plus-square btn btn-sm btn-warning"
+              data-bs-toggle="modal" data-bs-target="#exampleModal-categoria">Editar</button>
+            <a class="btn btn-danger btn-sm bi m-1 bi-trash3" (click)="eliminar(o.id)">Eliminar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal modal-xl" id="exampleModal-categoria" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Categoria</h5>
+          <button type="button" id="cerrar" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <form [formGroup]="formCategoria">
+                <input type="text" class="form-control m-2" type="text" placeholder="Nombre de la categoria"
+                formControlName="nombre">
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" *ngIf="!bandera" (click)="guardar()">Guardar
+            Categoria</button>
+          <button type="button" class="btn btn-primary" *ngIf="bandera" (click)="guardar()">Editar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

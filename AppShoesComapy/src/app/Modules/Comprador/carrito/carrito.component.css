@@ -1,0 +1,23 @@
+    /* Quitar las flechas de incremento y decremento en input type "number" */
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .input-group .btn {
+        padding: 0.2rem 0.5rem;
+        width: 2rem;
+        height: 38px;
+        margin-bottom: 0.6rem;  
+    }
+
+
+    .input-group input {
+        width: 3rem;
+    }
+    .carrito{
+        height: 800dvh;
+        width: 900dvh;
+        overflow: hidden;
+    }
