@@ -23,11 +23,12 @@ import { AgregarProductoComponent } from './Modules/Vendedor/vendedor-index/agre
 import { OfertaCategoriaComponent } from './Modules/Vendedor/vendedor-index/oferta-categoria/oferta-categoria.component';
 import { InformacionVendedorComponent } from './Modules/Vendedor/vendedor-index/vendedor-info/informacion-vendedor/informacion-vendedor.component';
 import { PqrsFormComponent } from './Shared/pqrs-form/pqrs-form.component';
+import { RolGuard } from './Core/Rol.guard';
 
 const routes: Routes = [
   {
     path: 'vendedor', component: VendedorIndexComponent,
-    //  canActivate:[AuthGuard],
+     canActivate:[RolGuard],
     children: [
       { path: 'productos', component: ProductoComponent },
       { path: 'pedidos', component: PedidosComponent },

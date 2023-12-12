@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { AuthService } from 'src/app/Core/auth.service';
+import { GetLocalesService } from 'src/app/Core/get-locales.service';
+import { LocalesService } from 'src/app/Core/locales.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,10 @@ export class LoginComponent implements OnInit {
   // -----
   public frmLongin: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router,
+              private getlocale:GetLocalesService,
+              private serviceLocal:LocalesService
+    ) {
     this.frmLongin = new FormGroup({
       username: new FormControl(null, [Validators.required]),
       password: new FormControl(null, [Validators.required])
@@ -38,11 +43,32 @@ export class LoginComponent implements OnInit {
     }
     this.authService.login(credentials).subscribe(result => {
       let dato=this.authService.getUserData()
-      localStorage.setItem("usuario",JSON.stringify(dato));
-      this.router.navigateByUrl('Vendedor')
+      if (dato.rol=="local") {
+        localStorage.setItem("usuario",JSON.stringify(dato));
+        this.datosLocal(dato.id);
+      this.router.navigateByUrl('vendedor') 
+      }else{
+        localStorage.setItem("usuario",JSON.stringify(dato));
+        this.router.navigateByUrl('carrito') 
+      }
     },
       error => {
         console.log(error)
       });
+  }
+  datosLocal(id:any){
+    let locales:any[]=[]
+    let local
+    this.serviceLocal.getAll().subscribe(result=>{
+      locales=result
+      locales.forEach(element => {
+        if(element.usuario_id=id){
+          local=element
+          localStorage.setItem('local',JSON.stringify(local))
+        }
+      });
+    },error=>{
+      console.log(error)
+    })
   }
 }

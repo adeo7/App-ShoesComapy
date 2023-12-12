@@ -4,20 +4,21 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class LocalesService {
-  private urlBase = 'http://127.0.0.1:8000/usuarios/local';
+export class GetLocalesService {
+  private urlBase = 'http://127.0.0.1:8000/usuarios/local_sin/';
   private httpHeader:HttpHeaders
 
   constructor(private Http:HttpClient) {
     this.httpHeader = new HttpHeaders();
     this.httpHeader.append('Content-Type', 'application/json');
    }
+   
    getAll() {
     return this.Http.get<any>(this.urlBase,{ headers :this.httpHeader })
   }
   save(data:any,id:any) {
     if (id!=0 ) {
-      return this.Http.put<any>(this.urlBase + '/'+ id+'/',data,{headers :this.httpHeader})  
+      return this.Http.put<any>(this.urlBase + '/'+ id,data,{headers :this.httpHeader})  
     }else{
       return this.Http.post<any>(this.urlBase,data,{headers :this.httpHeader})
     }
@@ -25,7 +26,7 @@ export class LocalesService {
   }
 
   getById(id:number) {
-    return this.Http.get<any>(this.urlBase+"/"+id,{headers :this.httpHeader})
+    return this.Http.get<any>(this.urlBase+id+"/",{headers :this.httpHeader})
   }
 
   delete(id:number) {

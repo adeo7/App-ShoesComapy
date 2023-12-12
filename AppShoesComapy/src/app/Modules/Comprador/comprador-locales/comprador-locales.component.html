@@ -2,18 +2,18 @@
 <div class="row">
     <div class="col-3 col-md-3  shadow p-3 m-3 text-center border" style="height: 27rem;" *ngFor="let local of listaLocales">
         <div class="circulo">
-            <img src="{{local.image}}" alt="imagen" class="img-fluid rounded-circle">
+            <img src="" alt="imagen" class="img-fluid rounded-circle">
         </div>
         <div>
             <br>
             <a (click)="verLocal(local.id)">
-                <h2>{{local.nombre_local}}</h2>
+                <h2>{{local.nombre}}</h2>
             </a>
             <br>
             <p class="mb-1">Número telefónico</p>
-            <p class="mb-1">{{local.telefono_local}}</p>
+            <p class="mb-1">{{local.telefono}}</p>
             <p class="mb-1">Dirección</p>
-            <p class="mb-1">{{local.direccion_local}}</p>
+            <p class="mb-1">{{local.direccion}}</p>
         </div>
     </div>
 
