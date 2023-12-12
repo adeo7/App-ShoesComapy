@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { AuthService } from 'src/app/Core/auth.service';
+import { GetUsuariosService } from 'src/app/Core/get-usuarios.service';
 import { UsuarioService } from 'src/app/Core/usuario.service';
 @Component({
   selector: 'app-registrarse',
@@ -12,7 +13,7 @@ export class RegistrarseComponent implements OnInit {
   public registroForm: FormGroup;
   documentTypes = ['CC', 'TI', 'CE'];
 
-  constructor(private serviceUsuario: UsuarioService, private router: Router, private authService: AuthService) {
+  constructor(private serviceUsuario: GetUsuariosService, private router: Router, private authService: AuthService) {
     this.registroForm = new FormGroup({
       firstName: new FormControl(null, [Validators.required]),
       username: new FormControl(null, [Validators.required]),
@@ -44,7 +45,6 @@ export class RegistrarseComponent implements OnInit {
       }else{
         let data={
           "password":this.registroForm.controls['password'].value,
-          "is_superuser": false,
           "username": this.registroForm.controls['username'].value,
           "name": this.registroForm.controls['firstName'].value,
           "last_name": this.registroForm.controls['lastName'].value,
@@ -53,10 +53,7 @@ export class RegistrarseComponent implements OnInit {
           "telefono": this.registroForm.controls['phone'].value,
           "tipo_documento": this.registroForm.controls['documentType'].value,
           "documento": this.registroForm.controls['documentNumber'].value,
-          "is_active": true,
-          "is_staff": true,
-          "roles_id": null,
-          "locales_usuarios": null
+          "roles_id": 1
       }
       this.serviceUsuario.save(data).subscribe(result=>{
         alert("Registrado")
