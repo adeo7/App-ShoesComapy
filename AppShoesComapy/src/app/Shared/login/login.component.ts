@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Core/auth.service';
 import { GetLocalesService } from 'src/app/Core/get-locales.service';
 import { LocalesService } from 'src/app/Core/locales.service';
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router,
               private getlocale:GetLocalesService,
-              private serviceLocal:LocalesService
+              private serviceLocal:LocalesService,
+              private toars:ToastrService
     ) {
     this.frmLongin = new FormGroup({
       username: new FormControl(null, [Validators.required]),
@@ -39,21 +41,24 @@ export class LoginComponent implements OnInit {
       "password": this.frmLongin.controls['password'].value
     }
     if (this.frmLongin.invalid) {
+      this.toars.error('Por favor completa los campos','ShoesComapny')
       return
     }
     this.authService.login(credentials).subscribe(result => {
       let dato=this.authService.getUserData()
+      this.toars.success('Bienvenido '+dato.username,'ShoesCompany')
       if (dato.rol=="local") {
         localStorage.setItem("usuario",JSON.stringify(dato));
         this.datosLocal(dato.id);
       this.router.navigateByUrl('vendedor') 
       }else{
         localStorage.setItem("usuario",JSON.stringify(dato));
-        this.router.navigateByUrl('carrito') 
+        this.router.navigateByUrl('') 
       }
     },
       error => {
-        console.log(error)
+        let err=error.error.error
+        this.toars.error(err,'ShoesCompany')
       });
   }
   datosLocal(id:any){

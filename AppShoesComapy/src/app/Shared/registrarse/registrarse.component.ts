@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Core/auth.service';
 import { GetUsuariosService } from 'src/app/Core/get-usuarios.service';
 import { UsuarioService } from 'src/app/Core/usuario.service';
@@ -13,7 +14,9 @@ export class RegistrarseComponent implements OnInit {
   public registroForm: FormGroup;
   documentTypes = ['CC', 'TI', 'CE'];
 
-  constructor(private serviceUsuario: GetUsuariosService, private router: Router, private authService: AuthService) {
+  constructor(private serviceUsuario: GetUsuariosService, private router: Router, private authService: AuthService,
+              private toars:ToastrService
+    ) {
     this.registroForm = new FormGroup({
       firstName: new FormControl(null, [Validators.required]),
       username: new FormControl(null, [Validators.required]),
@@ -35,13 +38,13 @@ export class RegistrarseComponent implements OnInit {
   }
   registro(): void {
     if (this.registroForm.invalid) {
-      alert("completa los campos")
+      this.toars.error('Por favor completa los campos','ShoesCompany')
       return
     }else{
       let pas=this.registroForm.controls['password'].value
       let confiPas=this.registroForm.controls['confirmPassword'].value
       if (pas!=confiPas) {
-        alert("verifica las contraseñas")
+        this.toars.error('Por favor verifica la contraseña','ShoesCompany')
       }else{
         let data={
           "password":this.registroForm.controls['password'].value,
@@ -53,17 +56,17 @@ export class RegistrarseComponent implements OnInit {
           "telefono": this.registroForm.controls['phone'].value,
           "tipo_documento": this.registroForm.controls['documentType'].value,
           "documento": this.registroForm.controls['documentNumber'].value,
-          "roles_id": 1
+          //"roles_id": 1
       }
       this.serviceUsuario.save(data).subscribe(result=>{
-        alert("Registrado")
+        this.toars.success('Bienvenido','ShoesCompany')
         let credentials = {
           "username": this.registroForm.controls['username'].value,
           "password": this.registroForm.controls['password'].value
         }
         this.authService.login(credentials).subscribe(result => {
           console.log(this.authService.getUserData())
-          this.router.navigateByUrl('')
+          this.router.navigateByUrl('#')
         },
           error => {
             console.log(error)

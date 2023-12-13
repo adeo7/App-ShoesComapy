@@ -1,0 +1,41 @@
+<app-nav-comprador></app-nav-comprador>
+<div class="container border shadow p-5 mt-2 text-center">
+<h1>Registro de local</h1>
+    <div class="row">
+        <form [formGroup]="formLocal" class="row">
+            <div class="col-lg-5 col-sm-12">
+                <label for="exampleFormControlInput1" class="form-label m-3 r-3 fw-bolder">Nombre
+                </label>
+                <input type="email" class="entrada m-1" 
+                formControlName="nombre"
+                id="exampleFormControlInput1"
+                    placeholder="Nombre tienda" >
+    
+                <label for="exampleFormControlInput1" class="form-label m-3 r-3 fw-bolder">Nit</label>
+                <input type="email" class="entrada m-1" id="exampleFormControlInput1" formControlName="nit"
+                    placeholder="1.223.33.1.1" >
+    
+                <label for="exampleFormControlInput1" class="form-label m-3 r-3 fw-bolder">Dirección</label>
+                <input type="email" class="entrada m-1" formControlName="direccion" id="exampleFormControlInput1"  >
+    
+            </div>
+            <div class="col-lg-5 col-sm-12 ">
+                <label for="exampleFormControlInput1" class="form-label m-3 r-3 fw-bolder">Teléfono</label>
+                <input type="email" class="entrada m-1" id="exampleFormControlInput1" placeholder="3124568788" formControlName="telefono">
+    
+                <label for="exampleFormControlInput1" class="form-label m-3 r-3 fw-bolder">Correo</label>
+                <input type="email" class="entrada m-1" id="exampleFormControlInput1"
+                    placeholder="name@gmail.com" formControlName="correo">
+                    
+                <label class="form-label m-3 r-3 fw-bolder">Subir imagen</label>
+                <input type="file" class="form-control" id="inputGroupFile02" accept=".png" required formControlName="imagen">
+            </div>
+        </form>
+        
+        <div class="container d-flex justify-content-center align-items-center p-5 col-6">
+            <button class="btn btn-custom" (click)="registrar()">Guardar</button>
+        </div>
+    </div>
+</div>
+
+
