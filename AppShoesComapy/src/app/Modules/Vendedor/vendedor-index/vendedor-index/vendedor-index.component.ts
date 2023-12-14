@@ -23,9 +23,12 @@ export class VendedorIndexComponent implements OnInit{
     if (loc) {
       this.local=JSON.parse(loc)
     }
+console.log(this.local)
   }
   cerrar(){
 this.service.logout();
+localStorage.removeItem('local')
+localStorage.removeItem('usuario')
 this.router.navigateByUrl('login');
   }
 }
