@@ -36,10 +36,10 @@ import { BannerComponent } from './Shared/banner/banner.component';
 import { AgregarProductoComponent } from './Modules/Vendedor/vendedor-index/agregar-producto/agregar-producto.component';
 import { InformacionVendedorComponent } from './Modules/Vendedor/vendedor-index/vendedor-info/informacion-vendedor/informacion-vendedor.component';
 import { ActualizarContraComponent } from './Modules/Vendedor/vendedor-index/vendedor-info/actualizar-contra/actualizar-contra.component';
-import { RecuperarContraComponent } from './Modules/Vendedor/vendedor-index/vendedor-info/recuperar-contra/recuperar-contra.component';
 import { OfertaCategoriaComponent } from './Modules/Vendedor/vendedor-index/oferta-categoria/oferta-categoria.component';
 import { PqrsFormComponent } from './Shared/pqrs-form/pqrs-form.component';
 import { RegistrarLocalComponent } from './Shared/registrar-local/registrar-local.component';
+import { PreguntasFrecuentesComponent } from './Shared/preguntas-frecuentes/preguntas-frecuentes.component';
 
 
 
@@ -72,10 +72,10 @@ import { RegistrarLocalComponent } from './Shared/registrar-local/registrar-loca
     AgregarProductoComponent,
     InformacionVendedorComponent,
     ActualizarContraComponent,
-    RecuperarContraComponent,
     OfertaCategoriaComponent,
     PqrsFormComponent,
     RegistrarLocalComponent,
+    PreguntasFrecuentesComponent,
   ],
   imports: [
     BrowserModule,

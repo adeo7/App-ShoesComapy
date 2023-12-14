@@ -12,7 +12,7 @@
     <table class="table table-bordered  ">
       <thead>
         <tr>
-          <th>Nombre de la categoria</th>
+          <th>Nombre de la categoría</th>
           <th>Opciones</th>
         </tr>
       </thead>
@@ -34,20 +34,20 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Agregar Categoria</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Agregar Categoría</h5>
           <button type="button" id="cerrar" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="row">
             <form [formGroup]="formCategoria">
-                <input type="text" class="form-control m-2" type="text" placeholder="Nombre de la categoria"
+                <input type="text" class="form-control m-2" type="text" placeholder="Nombre de la categoría"
                 formControlName="nombre">
             </form>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" *ngIf="!bandera" (click)="guardar()">Guardar
-            Categoria</button>
+            Categoría</button>
           <button type="button" class="btn btn-primary" *ngIf="bandera" (click)="guardar()">Editar</button>
         </div>
       </div>

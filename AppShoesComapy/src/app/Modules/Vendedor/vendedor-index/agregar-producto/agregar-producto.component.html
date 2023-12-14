@@ -7,8 +7,8 @@
         <label class="form-label m-2 r-2 fw-bolder">Nombre </label>
         <input type="text" class="form-control m-1 shadow" placeholder="Nombre" formControlName="nombre" required>
 
-        <label class="form-label m-2 r-2 fw-bolder">Descripcion</label>
-        <input type="text" class="form-control m-1 shadow" placeholder="Descripcion" formControlName="descripcion" required>
+        <label class="form-label m-2 r-2 fw-bolder">Descripción</label>
+        <input type="text" class="form-control m-1 shadow" placeholder="Descripción" formControlName="descripcion" required>
 
         <label class="form-label m-2 r-2 fw-bolder">Marca</label>
         <input type="text" class="form-control m-1 shadow" placeholder="Marca" formControlName="marca" required>
@@ -18,7 +18,7 @@
 
         <label class="form-label m-2 r-2 fw-bolder">Categoría:</label>
         <select formControlName="talla" class="form-select shadow m-1" aria-label="Default select example" formControlName="categoria">
-            <option selected>Selecciona una Categoria</option>
+            <option selected>Selecciona una categoría</option>
             <option *ngFor="let c of listCategorias" value="{{c.id}}">{{c.descripcion}}</option>
         </select>
 
@@ -35,7 +35,7 @@
         <label class="form-label m-2 r-2 fw-bolder">Precio:</label>
         <input type="number" class="form-control m-1 shadow" placeholder="Precio" formControlName="precio">
 
-        <label class="form-label m-2 r-2  fw-bolder">Genero:</label>
+        <label class="form-label m-2 r-2  fw-bolder">Género:</label>
         <select formControlName="genero" class="form-select m-1 shadow" aria-label="Default select example" formControlName="genero">
             <option value="Masculino">Masculino</option>
             <option value="Femenino">Femenino</option>
