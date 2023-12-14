@@ -24,28 +24,28 @@ ngOnInit(): void {
 }
 
 getList(){
-  this.getLocales.getAll().subscribe(result=>{
-    this.listaLocales=result
-    console.log(this.listaLocales)
-   },
-   error=>{
-    console.log(error)
-   }); 
-  // if (this.auth.isLoggedIn()) {
-  //   this.service.getAll().subscribe(result=>{
-  //     this.listaLocales=result
-  //    },
-  //    error=>{
-  //     console.log(error)
-  //    });  
-  // } else {
-  //   this.getLocales.getAll().subscribe(result=>{
-  //     this.listaLocales=result
-  //    },
-  //    error=>{
-  //     console.log(error)
-  //    }); 
-  // }
+  // this.getLocales.getAll().subscribe(result=>{
+  //   this.listaLocales=result
+  //   console.log(this.listaLocales)
+  //  },
+  //  error=>{
+  //   console.log(error)
+  //  }); 
+  if (this.auth.isLoggedIn()) {
+    this.service.getAll().subscribe(result=>{
+      this.listaLocales=result
+     },
+     error=>{
+      console.log(error)
+     });  
+  } else {
+    this.getLocales.getAll().subscribe(result=>{
+      this.listaLocales=result
+     },
+     error=>{
+      console.log(error)
+     }); 
+  }
 }
 
 verLocal(id:any){

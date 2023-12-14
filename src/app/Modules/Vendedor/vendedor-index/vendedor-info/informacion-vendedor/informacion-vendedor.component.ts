@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Core/auth.service';
 import { LocalesService } from 'src/app/Core/locales.service';
@@ -15,7 +16,7 @@ export class InformacionVendedorComponent implements OnInit {
   formLocal:FormGroup
 
   constructor(private auth: AuthService, private service:LocalesService,
-              private toars:ToastrService
+              private toars:ToastrService,private router:Router
     ){
     this.formLocal=new FormGroup({
       nombre:new FormControl(null,[Validators.required]),
@@ -43,9 +44,11 @@ export class InformacionVendedorComponent implements OnInit {
   this.service.save(data,this.local.id).subscribe(result=>{
     this.toars.success('Informacion guardada exitosamente', 'ShoesCompay')
     this.octenerinfo();
+    window.location.reload()
   },
   error=>{
     this.toars.error('Error al guardar')
+    console.log(error)
   })
 
   }
@@ -59,10 +62,10 @@ export class InformacionVendedorComponent implements OnInit {
       this.local=JSON.parse(loc)
     }
     this.service.getById(this.local.id).subscribe(result=>{
-      this.formLocal.controls['nombre'].setValue(result.nombre_local); 
-      this.formLocal.controls['nit'].setValue(result.nit_local); 
-      this.formLocal.controls['direccion'].setValue(result.direccion_local); 
-      this.formLocal.controls['telefono'].setValue(result.telefono_local); 
+      this.formLocal.controls['nombre'].setValue(result.nombre); 
+      this.formLocal.controls['nit'].setValue(result.nit); 
+      this.formLocal.controls['direccion'].setValue(result.direccion); 
+      this.formLocal.controls['telefono'].setValue(result.telefono); 
       this.formLocal.controls['correo'].setValue(this.usuario.email); 
       localStorage.removeItem('local')
       localStorage.setItem('local', JSON.stringify(result))

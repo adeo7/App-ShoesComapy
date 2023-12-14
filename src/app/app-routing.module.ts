@@ -14,6 +14,7 @@ import { InformacionCompradorComponent } from './Modules/Comprador/comprador-inf
 import { CambiarPasswordComponent } from './Modules/Comprador/comprador-informacion/cambiar-password/cambiar-password.component';
 import { CarritoComponent } from './Modules/Comprador/carrito/carrito.component';
 import { LoginComponent } from './Shared/login/login.component';
+import{PreguntasFrecuentesComponent} from './Shared/preguntas-frecuentes/preguntas-frecuentes.component'
 import { RegistrarseComponent } from './Shared/registrarse/registrarse.component';
 import { LocalVendedorComponent } from './Modules/Comprador/local-vendedor/local-vendedor.component';
 import { ProductoCompradorComponent } from './Modules/Comprador/productoComprador/productoComprador.component';
@@ -24,7 +25,7 @@ import { OfertaCategoriaComponent } from './Modules/Vendedor/vendedor-index/ofer
 import { InformacionVendedorComponent } from './Modules/Vendedor/vendedor-index/vendedor-info/informacion-vendedor/informacion-vendedor.component';
 import { PqrsFormComponent } from './Shared/pqrs-form/pqrs-form.component';
 import { RolGuard } from './Core/Rol.guard';
-import { PreguntasFrecuentesComponent } from './Shared/preguntas-frecuentes/preguntas-frecuentes.component';
+import { RegistrarLocalComponent } from './Shared/registrar-local/registrar-local.component';
 import { RecuperarPasswordComponent } from './Shared/recuperar-password/recuperar-password.component';
 
 const routes: Routes = [
@@ -64,13 +65,14 @@ const routes: Routes = [
   { path: 'carrito', component: CarritoComponent },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistrarseComponent },
-  { path: 'preguntas-frecuentes', component: PreguntasFrecuentesComponent},
+  { path: 'preguntas-frecuentes', component:PreguntasFrecuentesComponent},
   { path: 'recuperar', component: RecuperarPasswordComponent},
   { path: 'local/:id', component: LocalVendedorComponent },
   { path: 'producto/:id', component: ProductoCompradorComponent },
   { path: 'ter-y-con', component: FooterTerYCondComponent },
   { path: 'locales', component: CompradorLocalesComponent },
   { path: 'crear-pqrs', component: PqrsFormComponent },
+  { path: 'registro-local', component: RegistrarLocalComponent },
 
 
 ];

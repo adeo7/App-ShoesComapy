@@ -35,8 +35,10 @@ export class NavCompradorComponent {
   }
   cerrar(){
     alert("cerrar seccion?")
+    localStorage.removeItem('usuario')
+    localStorage.removeItem('local')
     this.auth.logout();
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('#');
   }
 
 }
