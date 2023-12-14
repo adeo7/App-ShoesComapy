@@ -1,0 +1,37 @@
+
+    <h1>Tu Información</h1>
+    <div class="row">
+        <form [formGroup]="formLocal" class="row">
+            <div class="col-lg-5 col-sm-12">
+                <label for="exampleFormControlInput1" class="form-label m-3 r-3 fw-bolder">Nombre
+                </label>
+                <input type="email" class="entrada m-1" 
+                formControlName="nombre"
+                id="exampleFormControlInput1"
+                    placeholder="Nombre tienda" value="{{local.nombre_local}}">
+
+                <label for="exampleFormControlInput1" class="form-label m-3 r-3 fw-bolder">Nit</label>
+                <input type="email" class="entrada m-1" id="exampleFormControlInput1" formControlName="nit"
+                    placeholder="1.223.33.1.1" value="{{local.nit_local}}">
+    
+                <label for="exampleFormControlInput1" class="form-label m-3 r-3 fw-bolder">Dirección</label>
+                <input type="email" class="entrada m-1" formControlName="direccion" id="exampleFormControlInput1" value="{{local.direccion_local}}" >
+    
+            </div>
+            <div class="col-lg-5 col-sm-12 ">
+                <label for="exampleFormControlInput1" class="form-label m-3 r-3 fw-bolder">Teléfono</label>
+                <input type="email" class="entrada m-1" id="exampleFormControlInput1" value="{{local.telefono_local}}" placeholder="3124568788" formControlName="telefono">
+    
+                <label for="exampleFormControlInput1" class="form-label m-3 r-3 fw-bolder">Correo</label>
+                <input type="email" class="entrada m-1" id="exampleFormControlInput1"
+                    placeholder="name@gmail.com" value="{{usuario.email}}" formControlName="correo">
+                    
+                <label class="form-label m-3 r-3 fw-bolder">Subir imagen</label>
+                <input type="file" class="form-control" id="inputGroupFile02" accept=".png" required formControlName="imagen">
+            </div>
+        </form>
+        
+        <div class="container d-flex justify-content-center align-items-center p-5 col-6">
+            <button class="btn btn-custom" (click)="GuardarCambios()">Guardar</button>
+        </div>
+    </div>

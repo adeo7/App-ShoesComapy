@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="card m-3 " style="width: 18rem;" *ngFor="let producto of listProductos">
+        <img class="img-fluid"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhyRZrXGhbu6iCk7i1W0UAT55Jq_T1oylfPA&usqp=CAU"
+            style="max-height: 9rem; min-height: 9rem;" alt="...">
+        <div class="card-body">
+            <h6 class="card-text">
+                <p>{{producto.nombre}}</p>
+            </h6>
+            <p class="card-text">Marca: {{producto.marca}}</p>
+            <p class="card-text">Precio: {{producto.precio}}</p>
+            <div class="container d-flex justify-content-center align-items-center">
+                <a (click)="verProducto(producto.id)" class="btn btn-dark " style=" border-radius: 70%;"><i
+                        class="fa-solid fa-plus fa-lg"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="card m-1"*ngFor="let producto of listProductos">
+        <div class="card-head">
+            <img src="" alt="zapato">
+        </div>
+        <div class="card-body">
+            <div >
+                <h4>{{producto.nombre}}</h4>
+                <h3>{{producto.precio}}</h3>
+            </div>
+            <p>{{producto.marca}}</p>
+            <img src="../icons/boton-mas.png" alt="">
+            <button style="background-color: blueviolet;" (click)="verProducto(producto.id)" class="btn">ver</button>
+        </div>
+    </div> -->
+</div>
