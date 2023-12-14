@@ -24,6 +24,9 @@ import { OfertaCategoriaComponent } from './Modules/Vendedor/vendedor-index/ofer
 import { InformacionVendedorComponent } from './Modules/Vendedor/vendedor-index/vendedor-info/informacion-vendedor/informacion-vendedor.component';
 import { PqrsFormComponent } from './Shared/pqrs-form/pqrs-form.component';
 import { RolGuard } from './Core/Rol.guard';
+import { RegistrarLocalComponent } from './Shared/registrar-local/registrar-local.component';
+import { RecuperarContraComponent } from './Modules/Vendedor/vendedor-index/vendedor-info/recuperar-contra/recuperar-contra.component';
+import { RecuperarPasswordComponent } from './Shared/recuperar-password/recuperar-password.component';
 
 const routes: Routes = [
   {
@@ -67,6 +70,8 @@ const routes: Routes = [
   { path: 'ter-y-con', component: FooterTerYCondComponent },
   { path: 'locales', component: CompradorLocalesComponent },
   { path: 'crear-pqrs', component: PqrsFormComponent },
+  { path: 'registro-local', component: RegistrarLocalComponent },
+  { path: 'recuperar', component: RecuperarPasswordComponent },
 
 
 ];
