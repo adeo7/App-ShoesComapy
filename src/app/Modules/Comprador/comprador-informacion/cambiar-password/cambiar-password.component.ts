@@ -1,15 +1,4 @@
-<<<<<<< HEAD
-import { Component } from '@angular/core';
 
-@Component({
-  selector: 'app-cambiar-password',
-  templateUrl: './cambiar-password.component.html',
-  styleUrls: ['./cambiar-password.component.css']
-})
-export class CambiarPasswordComponent {
-
-}
-=======
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -48,4 +37,3 @@ export class CambiarPasswordComponent implements OnInit{
     this.mostrarContrasena = !this.mostrarContrasena;
   }
 }
->>>>>>> ff5c0b256aade0d1079e2a8e333f91a95f19392d
