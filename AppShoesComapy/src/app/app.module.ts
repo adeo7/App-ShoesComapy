@@ -39,6 +39,7 @@ import { ActualizarContraComponent } from './Modules/Vendedor/vendedor-index/ven
 import { RecuperarContraComponent } from './Modules/Vendedor/vendedor-index/vendedor-info/recuperar-contra/recuperar-contra.component';
 import { OfertaCategoriaComponent } from './Modules/Vendedor/vendedor-index/oferta-categoria/oferta-categoria.component';
 import { PqrsFormComponent } from './Shared/pqrs-form/pqrs-form.component';
+import { PreguntasFrecuentesComponent } from './Shared/preguntas-frecuentes/preguntas-frecuentes.component';
 
 
 
@@ -74,6 +75,7 @@ import { PqrsFormComponent } from './Shared/pqrs-form/pqrs-form.component';
     RecuperarContraComponent,
     OfertaCategoriaComponent,
     PqrsFormComponent,
+    PreguntasFrecuentesComponent,
   ],
   imports: [
     BrowserModule,

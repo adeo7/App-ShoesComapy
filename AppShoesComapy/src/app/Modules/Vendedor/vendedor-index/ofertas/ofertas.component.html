@@ -29,7 +29,7 @@
                     (click)="editar(o.id)"
                     class="bi bi-plus-square btn btn-sm btn-warning" 
                     data-bs-toggle="modal" 
-                    data-bs-target="#exampleModal">editar</button>
+                    data-bs-target="#exampleModal">Editar</button>
                     <a class="btn btn-danger btn-sm bi m-1 bi-trash3" (click)="eliminar(o.id)">Eliminar</a>
                 </td>
             </tr>
@@ -78,7 +78,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary" *ngIf="!bandera" (click)="guardar()" >Guardar Oferta</button>
-            <button type="button" class="btn btn-primary" *ngIf="bandera" (click)="actualizar()" >editar</button>
+            <button type="button" class="btn btn-primary" *ngIf="bandera" (click)="actualizar()" >Editar</button>
         </div>
       </div>
     </div>
