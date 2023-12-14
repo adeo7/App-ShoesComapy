@@ -13,20 +13,31 @@
           <li class="nav-item">
             <a class="nav-link active text-white" aria-current="page" routerLink="locales">Locales</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active text-white" aria-current="page" routerLink="locales">Mi local</a>
-          </li>
+
           <!-- otros enlaces izquierda -->
         </ul>
         <form class="d-flex" role="search">
           <!-- imagenes parte derecha -->
           <div class="d-flex justify-content-between">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link active text-white" routerLink="/carrito">
+                  <i class="fas fa-shopping-cart"></i>
+                </a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link active text-white" aria-current="page" routerLink="locales">
+                  <i class="fas fa-store"></i>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link active text-white" routerLink="">
+                  <i class="fas fa-user-cog"></i>
+                </a>
+              </li>
               <li class="nav-item dropdown" >
                 <a class="nav-link active text-white" routerLink="">
-                  <h6>
-                    Cerrar sesión
-                  </h6>
+                  <i class="fas fa-sign-out-alt"></i>
                 </a>
               </li>
             </ul>
