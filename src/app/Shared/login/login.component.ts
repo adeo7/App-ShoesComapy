@@ -42,6 +42,9 @@ export class LoginComponent implements OnInit {
     }
     if (this.frmLongin.invalid) {
       this.toars.error('Por favor completa los campos','ShoesComapny')
+      Object.values(this.frmLongin.controls).forEach(control => {
+        control.markAsTouched();
+      })
       return
     }
     this.authService.login(credentials).subscribe(result => {
@@ -75,5 +78,37 @@ export class LoginComponent implements OnInit {
     },error=>{
       console.log(error)
     })
+  }
+  getErrorMessage(controlName: string): string {
+    const control = this.frmLongin.get(controlName);
+    if (control?.hasError('required')) {
+      return 'Este campo es obligatorio.';
+    } else if (control?.hasError('pattern')) {
+      return this.getPatternErrorMessage(controlName);
+    } else if (control?.hasError('minlength')) {
+      return this.getMinLengthErrorMessage(controlName);
+    }
+    return '';
+  }
+  private getPatternErrorMessage(controlName: string): string {
+    switch (controlName) {
+      case 'username':
+        return 'Este campo no es válido para el nombre de usuario.';
+      // Agrega más casos según sea necesario para otros campos
+      default:
+        return 'Este campo no es válido.';
+    }
+  }
+
+  private getMinLengthErrorMessage(controlName: string): string {
+    const control = this.frmLongin.get(controlName);
+
+    switch (controlName) {
+      case 'username':
+        return `El nombre de usuario debe tener al menos ${control?.getError('minlength').requiredLength} caracteres.`;
+      // Agrega más casos según sea necesario para otros campos
+      default:
+        return `Este campo debe tener al menos ${control?.getError('minlength').requiredLength} caracteres.`;
+    }
   }
 }

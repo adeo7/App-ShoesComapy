@@ -40,6 +40,7 @@ import { RecuperarContraComponent } from './Modules/Vendedor/vendedor-index/vend
 import { OfertaCategoriaComponent } from './Modules/Vendedor/vendedor-index/oferta-categoria/oferta-categoria.component';
 import { PqrsFormComponent } from './Shared/pqrs-form/pqrs-form.component';
 import { PreguntasFrecuentesComponent } from './Shared/preguntas-frecuentes/preguntas-frecuentes.component';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 
 
 
@@ -86,6 +87,7 @@ import { PreguntasFrecuentesComponent } from './Shared/preguntas-frecuentes/preg
     ReactiveFormsModule,
     BrowserAnimationsModule, 
     ToastrModule.forRoot(),
+    NgxIntlTelInputModule
   ],
   providers: [
     {

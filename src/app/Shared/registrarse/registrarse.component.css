@@ -9,3 +9,8 @@
 .input-group input {
     width: 3rem;
 }
+#my-input-id {
+    border: 1px solid #000;
+    padding: 10px;
+   }
+   
