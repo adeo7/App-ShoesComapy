@@ -14,15 +14,16 @@
     <input type="checkbox" formControlName="terms" required> Acepto los términos y condiciones
     <button type="submit" [disabled]="!registroForm.valid" onclick="registro()">Registrar</button>
   </form> -->
-  
+
 <app-nav-comprador></app-nav-comprador>
 <div class="container-fluid shadow mt-5 col col-5" style=" border: 1px solid #201f1f; border-radius: 50px;">
-    <form class=" row m-5 " [formGroup]="registroForm" >
+    <form class=" row m-5 " [formGroup]="registroForm">
         <h2 class="text-center">Regístrate</h2>
         <div class="col-md-6 ">
             <div class="form-group">
                 <label class="fw-bolder" for="nombre">Nombre de Usuario</label>
-                <input  type="text" class="form-control " id="nombre" placeholder="Tu nombre de usuario" formControlName="username">
+                <input type="text" class="form-control " id="nombre" placeholder="Tu nombre de usuario"
+                    formControlName="username">
             </div>
             <div class="form-group">
                 <label class="fw-bolder" for="nombre">Nombres</label>
@@ -31,12 +32,14 @@
 
             <div class="form-group">
                 <label class="fw-bolder" for="apellidos">Apellidos</label>
-                <input type="text" class="form-control" id="apellidos" placeholder="Apellidos" formControlName="lastName">
+                <input type="text" class="form-control" id="apellidos" placeholder="Apellidos"
+                    formControlName="lastName">
             </div>
 
             <div class="form-group">
                 <label class="fw-bolder" for="direccion">Dirección</label>
-                <input type="text" class="form-control" id="direccion" placeholder="Dirección" formControlName="address">
+                <input type="text" class="form-control" id="direccion" placeholder="Dirección"
+                    formControlName="address">
             </div>
 
             <div class="form-group">
@@ -64,18 +67,41 @@
 
             <div class="form-group">
                 <label class="fw-bolder" for="documento">Número de Documento</label>
-                <input type="text" class="form-control" id="documento" placeholder="Número de Documento" formControlName="documentNumber">
+                <input type="text" class="form-control" id="documento" placeholder="Número de Documento"
+                    formControlName="documentNumber">
             </div>
 
             <div class="form-group">
-                <label for="contrasena">Contraseña</label>
-                <input type="password" class="form-control" id="password" placeholder="Contraseña" formControlName="password">
+                <label class="fw-bolder" for="contrasena">Contraseña</label>
+                <div class="input-group align-items-center">
+                    <input type="{{ mostrarContrasena ? 'text' : 'password' }}" class="form-control" id="password"
+                        placeholder="Contraseña" formControlName="password">
+                    <button class="btn btn-outline-secondary btn-sm" type="button" (click)="toggleMostrarContrasena()">
+                        <span *ngIf="mostrarContrasena">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                        <span *ngIf="!mostrarContrasena">
+                            <i class="fas fa-eye-slash"></i>
+                        </span>
+                    </button>
+                </div>
             </div>
 
             <div class="form-group">
                 <label class="fw-bolder" for="confirmarContrasena">Confirmar Contraseña</label>
-                <input type="password" class="form-control" id="confirmarContrasena"
-                    placeholder="Confirmar Contraseña" formControlName="confirmPassword">
+                <div class="input-group align-items-center">
+                    <input type="{{ mostrarContrasenaConfirmar ? 'text' : 'password' }}" class="form-control"
+                        id="confirmarContrasena" placeholder="Confirmar Contraseña" formControlName="confirmPassword">
+                    <button class="btn btn-outline-secondary btn-sm" type="button"
+                        (click)="toggleMostrarContrasenaConfirmar()">
+                        <span *ngIf="mostrarContrasenaConfirmar">
+                            <i class="fas fa-eye"></i>
+                        </span>
+                        <span *ngIf="!mostrarContrasenaConfirmar">
+                            <i class="fas fa-eye-slash"></i>
+                        </span>
+                    </button>
+                </div>
             </div>
         </div>
 

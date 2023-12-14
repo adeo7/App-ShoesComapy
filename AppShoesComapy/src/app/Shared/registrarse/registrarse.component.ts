@@ -78,6 +78,14 @@ export class RegistrarseComponent implements OnInit {
       }
     }
   }
+  mostrarContrasenaConfirmar = false;
+  toggleMostrarContrasenaConfirmar() {
+    this.mostrarContrasenaConfirmar = !this.mostrarContrasenaConfirmar;
+  }
+  mostrarContrasena = false;
+  toggleMostrarContrasena() {
+    this.mostrarContrasena = !this.mostrarContrasena;
+  }
 
   // checkPasswords(group: FormGroup) {
   //   let pass = group.controls.password.value;
