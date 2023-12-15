@@ -1,1 +1,50 @@
-<p>respuesta-pqrs works!</p>
+<h2>Lista de Pqrs</h2>
+<div class="text-lg-right">
+</div>
+<br>
+<div class="table table-responsive">
+  <table class="table table-bordered  ">
+    <thead>
+      <tr>
+        <th>Número de radicado</th>
+        <th>fecha</th>
+        <th>Tipo</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of listPqrs">
+        <td>{{p.numero_radicado}}</td>
+        <td>{{p.fecha_estimada}}</td>
+        <td>{{p.tipo_peticion}}</td>
+        <td>{{p.local_peticion}}</td>
+        <td>
+          <button type="submit" class="bi bi-plus-square btn btn-sm btn-warning" data-bs-toggle="modal"
+            (click)="ver(p.id)" data-bs-target="#exampleModal">Ver</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Responder</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col m-1 p-2 border radio">
+            <h2>{{pqr.tipo_peticion}}</h2>
+            <p>Numero de radicado: {{pqr.numero_radicado}}</p>
+            <label class="form-label">Descripcion del pqr</label>
+            <p>{{pqr.descripcion}}</p>
+            <p>Fecha del pqr: {{pqr.tiempo_restante}}</p>
+            <p>Fecha limite de respuesta: {{pqr.fecha_estimada}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
