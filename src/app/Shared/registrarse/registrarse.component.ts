@@ -63,6 +63,9 @@ export class RegistrarseComponent implements OnInit {
       if (pas != confiPas) {
         this.toars.error('Por favor verifica la contraseña', 'ShoesCompany')
       } else {
+        let phoneNumber = this.registroForm.controls['phone'].value;
+        let formattedPhoneNumber = phoneNumber.internationalNumber;
+        console.log(formattedPhoneNumber)
         let data = {
           "password": this.registroForm.controls['password'].value,
           "username": this.registroForm.controls['username'].value,
@@ -70,7 +73,7 @@ export class RegistrarseComponent implements OnInit {
           "last_name": this.registroForm.controls['lastName'].value,
           "email": this.registroForm.controls['email'].value,
           "direccion": this.registroForm.controls['address'].value,
-          "telefono": this.registroForm.controls['phone'].value,
+          "telefono": formattedPhoneNumber,
           "tipo_documento": this.registroForm.controls['documentType'].value,
           "documento": this.registroForm.controls['documentNumber'].value,
           //"roles_id": 1

@@ -41,6 +41,7 @@ import { PqrsFormComponent } from './Shared/pqrs-form/pqrs-form.component';
 import { RegistrarLocalComponent } from './Shared/registrar-local/registrar-local.component';
 import { PreguntasFrecuentesComponent } from './Shared/preguntas-frecuentes/preguntas-frecuentes.component';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { RespuestaPqrsComponent } from './Modules/Comprador/comprador-informacion/respuesta-pqrs/respuesta-pqrs.component';
 
 
 
@@ -77,6 +78,7 @@ import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
     PqrsFormComponent,
     RegistrarLocalComponent,
     PreguntasFrecuentesComponent,
+    RespuestaPqrsComponent,
   ],
   imports: [
     BrowserModule,
