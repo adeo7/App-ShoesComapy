@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import {CloudinaryModule} from '@cloudinary/ng';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -86,6 +87,7 @@ import { PreguntasFrecuentesComponent } from './Shared/preguntas-frecuentes/preg
     ReactiveFormsModule,
     BrowserAnimationsModule, 
     ToastrModule.forRoot(),
+    CloudinaryModule
   ],
   providers: [
     {

@@ -145,4 +145,24 @@ export class AgregarProductoComponent implements OnInit {
     });
 
   }
+
+  guardarimagen(id:any){
+
+    const formData = new FormData();
+      formData.append("image", this.FrmProducto.controls['imgProducto'].value);
+      formData.append("codigo", '00');
+      formData.append("producto_id", id);
+
+     
+     this.serviceFoto.saveimagen(formData).subscribe(result=>{
+      this.toastr.success('imagen guardada')
+     },
+     error=>{
+      console.log(error)
+     })
+  }
+  onFileSelected(event: any) {
+    this.FrmProducto.controls['imgProducto'].setValue(event.target.files[0])
+    //document.getElementById('inputGroupFile02').value=''
+  }
 }
