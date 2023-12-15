@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -6,13 +5,12 @@ import { forkJoin } from 'rxjs';
 import { PqrsRespuestaService } from 'src/app/Core/pqrs-respuesta.service';
 import { PqrsService } from 'src/app/Core/pqrs.service';
 import { PqrstipoService } from 'src/app/Core/pqrstipo.service';
-
 @Component({
-  selector: 'app-pqrs',
-  templateUrl: './pqrs.component.html',
-  styleUrls: ['./pqrs.component.css']
+  selector: 'app-respuesta-pqrs',
+  templateUrl: './respuesta-pqrs.component.html',
+  styleUrls: ['./respuesta-pqrs.component.css']
 })
-export class PQRSComponent implements OnInit {
+export class RespuestaPqrsComponent {
 
   listPqrs: any[] = []
   listPqrsRespuesta: any[] = []
@@ -64,26 +62,4 @@ export class PQRSComponent implements OnInit {
       this.local=JSON.parse(lo)
     }
   }
-
-  responder(){
-    if (this.frmPqr.invalid) {
-      this.toars.error('Tienes que escribir una respuesta', 'ShoesCompany')
-      return
-    }
-   let  data={
-      "numero_radicado": this.pqr.numero_radicado,
-      "tipo_peticion": this.pqr.tipo_peticion,
-      "descripcion": this.frmPqr.controls['descripcion'].value,
-      "local_id":this.local.id,
-      "usuario_id":this.usuario.id,
-      "pqr_id":this.pqr.id
-  }  
-  this.serviceRespuesta.save(data).subscribe(result=>{
-    this.toars.success('Respuesta enviada','ShoesCompany')
-  },
-  error=>{
-    this.toars.error('Error al enviar')
-  });
-  }
 }
-

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import {CloudinaryModule} from '@cloudinary/ng';
+import { CloudinaryModule } from '@cloudinary/ng';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,6 +41,8 @@ import { OfertaCategoriaComponent } from './Modules/Vendedor/vendedor-index/ofer
 import { PqrsFormComponent } from './Shared/pqrs-form/pqrs-form.component';
 import { RegistrarLocalComponent } from './Shared/registrar-local/registrar-local.component';
 import { PreguntasFrecuentesComponent } from './Shared/preguntas-frecuentes/preguntas-frecuentes.component';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { RespuestaPqrsComponent } from './Modules/Comprador/comprador-informacion/respuesta-pqrs/respuesta-pqrs.component';
 
 
 
@@ -77,6 +79,7 @@ import { PreguntasFrecuentesComponent } from './Shared/preguntas-frecuentes/preg
     PqrsFormComponent,
     RegistrarLocalComponent,
     PreguntasFrecuentesComponent,
+    RespuestaPqrsComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,8 +88,9 @@ import { PreguntasFrecuentesComponent } from './Shared/preguntas-frecuentes/preg
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    NgxIntlTelInputModule,
     CloudinaryModule
   ],
   providers: [
