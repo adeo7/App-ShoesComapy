@@ -50,10 +50,8 @@ export class CompradorProductosComponent implements OnInit {
       this.serviceFoto.getAll()
     ]).subscribe(
       ([productosResult, fotosResult]) => {
-        console.log(productosResult)
         productos = productosResult;
         listFotoProductos = fotosResult;
-        console.log(fotosResult)
         for (let i = 0; i < productos.length; i++) {
           for (let j = 0; j < listFotoProductos.length; j++) {
             if (productos[i].id == listFotoProductos[j].producto) {
@@ -73,7 +71,6 @@ export class CompradorProductosComponent implements OnInit {
           this.listProductos.push(producto);
           listFotosP = []; // Reinicia la lista para el próximo producto
         }
-        console.log(this.listProductos)
       },
       error => {
         // Manejo de errores si es necesario

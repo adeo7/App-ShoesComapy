@@ -47,16 +47,23 @@ export class InformacionCompradorComponent implements OnInit {
     });
   }
   actualizar(){
+    if (this.FormUsuario.invalid) {
+      this.toars.error('Completa todos los campos')
+    }
     let data={
-      "username": "brayan",
-      "name": "brayan david",
-      "last_name": "mosquera medina",
-      "email": "bdmosquera7@misena.edu.co",
-      "direccion": "crr 23 sur",
-      "telefono": "31569686",
-      "tipo_documento": "cc",
-      "documento": 10036512,
-      "roles_id": 1
+      "username": this.FormUsuario.controls['nombreUsuario'].value,
+      "password": this.usuario.password,
+      "name": this.FormUsuario.controls['nombre'].value,
+      "last_name": this.FormUsuario.controls['apellidos'].value,
+      "email": this.FormUsuario.controls['correo'].value,
+      "direccion": this.FormUsuario.controls['direccion'].value,
+      "telefono": this.FormUsuario.controls['telefono'].value,
+      "tipo_documento": this.FormUsuario.controls['tipo'].value,
+      "documento": this.FormUsuario.controls['NumDoc'].value,
+      "rol":this.usuario.rol
   }
+  this.usuarioService.editar(data, this.usuario.id).subscribe(result=>{
+    this.toars.success('Informacion actualiza', 'ShoesCompany')
+  })
   }
 }

@@ -39,6 +39,7 @@ export class LocalVendedorComponent implements OnInit {
       ]).subscribe(
         ([Result, productosResult]) => {
           this.local = Result
+          console.log(this.local)
           productos = productosResult;
           for (let i = 0; i < productos.length; i++) {
             if (productos[i].local == this.local.nombre) {

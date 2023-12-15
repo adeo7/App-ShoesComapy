@@ -33,15 +33,15 @@ export class InformacionVendedorComponent implements OnInit {
    
   }
   GuardarCambios(){
-    let data={
-      "nombre_local":this.formLocal.controls['nombre'].value,
-      "direccion_local":this.formLocal.controls['direccion'].value,
-      "telefono_local": this.formLocal.controls['telefono'].value,
-      "nit_local": this.formLocal.controls['nit'].value,
-      "image": this.formLocal.controls['imagen'].value,
-      "usuario_id": this.usuario.id
-  }
-  this.service.save(data,this.local.id).subscribe(result=>{
+    const formData = new FormData();
+      formData.append("image", this.formLocal.controls['imagen'].value);
+      formData.append("nombre_local", this.formLocal.controls['nombre'].value);
+      formData.append("direccion_local", this.formLocal.controls['direccion'].value);
+      formData.append("telefono_local", this.formLocal.controls['telefono'].value);
+      formData.append("nit_local", this.formLocal.controls['nit'].value);
+     // formData.append("usuario_id", this.usuario.id);
+
+  this.service.save(formData,this.local.id).subscribe(result=>{
     this.toars.success('Informacion guardada exitosamente', 'ShoesCompay')
     this.octenerinfo();
     window.location.reload()
@@ -51,6 +51,9 @@ export class InformacionVendedorComponent implements OnInit {
     console.log(error)
   })
 
+  }
+  onFileSelected(event: any) {
+    this.formLocal.controls['imagen'].setValue(event.target.files[0])
   }
   octenerinfo(){
     let usu=localStorage.getItem('usuario')

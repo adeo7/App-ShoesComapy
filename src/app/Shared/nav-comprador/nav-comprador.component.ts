@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Core/auth.service';
 import { LocalesService } from 'src/app/Core/locales.service';
 
@@ -15,7 +16,8 @@ export class NavCompradorComponent {
   
   constructor(private service: LocalesService,
     private router: Router,
-    private auth :AuthService
+    private auth :AuthService,
+    private toars: ToastrService
 
   ) { 
    
@@ -34,11 +36,12 @@ export class NavCompradorComponent {
     this.Usuario=this.auth.getUserData()
   }
   cerrar(){
-    alert("cerrar seccion?")
+   this.toars.error('Saliste', 'ShoesCompany')
     localStorage.removeItem('usuario')
     localStorage.removeItem('local')
     this.auth.logout();
-    this.router.navigateByUrl('#');
+    this.router.navigateByUrl('');
+    window.location.reload()
   }
 
 }

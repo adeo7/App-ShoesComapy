@@ -17,7 +17,7 @@ export class AgregarProductoComponent implements OnInit {
   listPrdocutos: any[] = []
   listCategorias: any[] = []
   listTallas: any[] = []
-  id=0
+  id:any=0
   bandera=false
   public FrmProducto: FormGroup
   constructor(private service: ProductoService,
@@ -39,7 +39,7 @@ export class AgregarProductoComponent implements OnInit {
       talla: new FormControl(null, [Validators.required]),
       disponibles: new FormControl(null, [Validators.required]),
       color: new FormControl(null, [Validators.required]),
-      imgProducto: new FormControl(null, [Validators.required])
+      imgProducto: new FormControl(null)
       // falta para almacenar la imagen
     });
   }
@@ -124,7 +124,7 @@ export class AgregarProductoComponent implements OnInit {
   }
   editar(){
     if (this.FrmProducto.invalid) {
-      console.log("falto")
+      this.toastr.error('Por favor completa los campos', 'ShoesCompany')
     }
     let data={
       "nombre": this.FrmProducto.controls['nombre'].value,
@@ -146,12 +146,12 @@ export class AgregarProductoComponent implements OnInit {
 
   }
 
-  guardarimagen(id:any){
+  guardarimagen(){
 
     const formData = new FormData();
       formData.append("image", this.FrmProducto.controls['imgProducto'].value);
       formData.append("codigo", '00');
-      formData.append("producto_id", id);
+      formData.append("producto_id", this.id);
 
      
      this.serviceFoto.saveimagen(formData).subscribe(result=>{
@@ -163,6 +163,5 @@ export class AgregarProductoComponent implements OnInit {
   }
   onFileSelected(event: any) {
     this.FrmProducto.controls['imgProducto'].setValue(event.target.files[0])
-    //document.getElementById('inputGroupFile02').value=''
   }
 }

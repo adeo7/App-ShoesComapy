@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { forkJoin } from 'rxjs';
 import { AuthService } from 'src/app/Core/auth.service';
 import { CarritoDetallesService } from 'src/app/Core/carrito-detalles.service';
 import { GetProductosService } from 'src/app/Core/get-productos.service';
+import { ImagenProductoService } from 'src/app/Core/imagen-producto.service';
 import { ProductoService } from 'src/app/Core/producto.service';
 
 @Component({
@@ -20,17 +22,20 @@ export class ProductoCompradorComponent implements OnInit{
   disponible:number=0
   cantidad=0
   precio=0
+  fotosP:any[]=[]
   constructor(private service:ProductoService,
               private activeRouter:ActivatedRoute,
               private getProducto: GetProductosService,
               private carritoDservice:CarritoDetallesService,
               private aunthService: AuthService,
-              private toars: ToastrService
+              private toars: ToastrService,
+              private serviceFoto:ImagenProductoService
     ){
       this.id=activeRouter.snapshot.params['id'];
   }
   ngOnInit(): void {
    this.getList(); 
+   this.fotos()
   }
 
   getList(){
@@ -77,5 +82,16 @@ export class ProductoCompradorComponent implements OnInit{
       console.log(error)
     });
   }
+    fotos(){
+      let fot:any[]=[]
+      this.serviceFoto.getAll().subscribe(result=>{
+        fot=result
+        fot.forEach(element => {
+            if (element.producto==this.id) {
+              this.fotosP.push(element)
+            }
+        });
+      })
+    }
 
 }

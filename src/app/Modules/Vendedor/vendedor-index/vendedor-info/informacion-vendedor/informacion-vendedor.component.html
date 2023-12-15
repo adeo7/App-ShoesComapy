@@ -27,7 +27,7 @@
                     placeholder="name@gmail.com" value="{{usuario.email}}" formControlName="correo">
                     
                 <label class="form-label m-3 r-3 fw-bolder">Subir imagen</label>
-                <input type="file" class="form-control" id="inputGroupFile02" accept=".png" required formControlName="imagen">
+                <input type="file" class="form-control" id="inputGroupFile02" accept=".png" required formControlName="imagen" (change)="onFileSelected($event)">
             </div>
         </form>
         

@@ -44,14 +44,16 @@
             <option value="niña">Niña</option>
         </select>
 
-        <label class="form-label m-2 r-2 fw-bolder">Subir imagen:</label>
+        <label class="form-label m-2 r-2 fw-bolder" *ngIf="bandera">Subir imagen:</label>
         <input type="file" class="form-control m-1 shadow" id="inputGroupFile02" accept=".png" required
         (change)="onFileSelected($event)"
+        *ngIf="bandera"
             formControlName="imgProducto">
     </div>
     <div class="container d-flex justify-content-center align-items-center p-5 col-6">
-        <button class="btn btn-custom" *ngIf="!bandera" (click)="guardarimagen(1)">Guardar</button>
+        <button class="btn btn-custom" *ngIf="!bandera" (click)="guardar()">Guardar</button>
         <button class="btn btn-custom" *ngIf="bandera" (click)="editar()">Editar</button>
+        <button class="btn btn-custom" *ngIf="bandera" (click)="guardarimagen()">Agragar imagen</button>
     </div>
 </div>
 </form>
