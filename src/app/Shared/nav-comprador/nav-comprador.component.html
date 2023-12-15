@@ -11,7 +11,7 @@
           <a class="nav-link active text-white" aria-current="page" routerLink="">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active text-white" aria-current="page" routerLink="locales">Locales</a>
+          <a class="nav-link active text-white" aria-current="page" routerLink="/locales">Locales</a>
         </li>
         <!-- otros enlaces izquierda -->
       </ul>
@@ -21,25 +21,20 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item dropdown" *ngIf="inicio">
               <a class="nav-link active text-white" routerLink="/carrito">
-                <h6>
-                  carrito
-                </h6>
+                <i class="fas fa-shopping-cart"></i>
+              </a>
+            </li> 
+            <li class="nav-item dropdown" *ngIf="inicio">
+              <a class="nav-link active text-white" routerLink="/comprador-info">
+                <i class="fas fa-user-cog"></i>
               </a>
             </li>
             <li class="nav-item dropdown" *ngIf="inicio">
               <a class="nav-link active text-white" (click)="cerrar()" routerLink="">
-                <h6>
-                  cerrar sesión
-                </h6>
+                <i class="fas fa-sign-out-alt"></i>
               </a>
             </li>
-            <li class="nav-item dropdown" *ngIf="inicio">
-              <a class="nav-link active text-white" routerLink="comprador-info">
-                <h6>
-                 {{Usuario.username}}
-                </h6>
-              </a>
-            </li>
+
             <li class="nav-item dropdown" *ngIf="!inicio">
               <a class="nav-link active text-white" routerLink="/login">
                 <h6>
