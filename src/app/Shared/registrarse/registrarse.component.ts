@@ -79,18 +79,8 @@ export class RegistrarseComponent implements OnInit {
           //"roles_id": 1
         }
         this.serviceUsuario.save(data).subscribe(result => {
-          this.toars.success('Bienvenido', 'ShoesCompany')
-          let credentials = {
-            "username": this.registroForm.controls['username'].value,
-            "password": this.registroForm.controls['password'].value
-          }
-          this.authService.login(credentials).subscribe(result => {
-            console.log(this.authService.getUserData())
-            this.router.navigateByUrl('#')
-          },
-            error => {
-              console.log(error)
-            });
+          this.toars.success('Bienvenido ya puedes iniciar sesión', 'ShoesCompany')
+          this.router.navigateByUrl('login')
         },
           error => {
             console.log(error)

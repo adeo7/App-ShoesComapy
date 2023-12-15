@@ -24,59 +24,83 @@ export class CompradorProductosComponent implements OnInit {
   this.ver();
   }
 
-
-  getList() {
-    if (this.auth.isLoggedIn()) {
-      this.service.getAll().subscribe(result=>{
-        this.listProductos=result;
-      });
-    } else {
-      this.productoSin.getAll().subscribe(result=>{
-        this.listProductos=result;
-      }); 
-    }
-
-  }
   verProducto(id: any) {
     this.router.navigateByUrl('producto/' + id)
   }
+  
   ver() {
     let listFotoProductos: any[] = [];
     let listFotosP: any[] = [];
     let productos: any[] = [];
 
-    forkJoin([
-      this.service.getAll(),
-      this.serviceFoto.getAll()
-    ]).subscribe(
-      ([productosResult, fotosResult]) => {
-        productos = productosResult;
-        listFotoProductos = fotosResult;
-        for (let i = 0; i < productos.length; i++) {
-          for (let j = 0; j < listFotoProductos.length; j++) {
-            if (productos[i].id == listFotoProductos[j].producto) {
-              listFotosP.push(listFotoProductos[j].image);
+    if (this.auth.isLoggedIn()) {
+      forkJoin([
+        this.service.getAll(),
+        this.serviceFoto.getAll()
+      ]).subscribe(
+        ([productosResult, fotosResult]) => {
+          productos = productosResult;
+          listFotoProductos = fotosResult;
+          for (let i = 0; i < productos.length; i++) {
+            for (let j = 0; j < listFotoProductos.length; j++) {
+              if (productos[i].id == listFotoProductos[j].producto) {
+                listFotosP.push(listFotoProductos[j].image);
+              }
             }
+            let producto = {
+              "id": productos[i].id,
+              "nombre": productos[i].nombre,
+              "precio": productos[i].precio,
+              "color": productos[i].color,
+              "marca": productos[i].marca,
+              "genero": productos[i].genero,
+              "disponibles": productos[i].disponible,
+              "fotos": listFotosP
+            };
+            this.listProductos.push(producto);
+            listFotosP = []; // Reinicia la lista para el próximo producto
           }
-          let producto = {
-            "id": productos[i].id,
-            "nombre": productos[i].nombre,
-            "precio": productos[i].precio,
-            "color": productos[i].color,
-            "marca": productos[i].marca,
-            "genero": productos[i].genero,
-            "disponibles": productos[i].disponible,
-            "fotos": listFotosP
-          };
-          this.listProductos.push(producto);
-          listFotosP = []; // Reinicia la lista para el próximo producto
+        },
+        error => {
+          // Manejo de errores si es necesario
+          console.error(error);
         }
-      },
-      error => {
-        // Manejo de errores si es necesario
-        console.error(error);
-      }
-    );
+      ); 
+    } else {
+      forkJoin([
+        this.productoSin.getAll(),
+        this.serviceFoto.getAll()
+      ]).subscribe(
+        ([productosResult, fotosResult]) => {
+          productos = productosResult;
+          listFotoProductos = fotosResult;
+          for (let i = 0; i < productos.length; i++) {
+            for (let j = 0; j < listFotoProductos.length; j++) {
+              if (productos[i].id == listFotoProductos[j].producto) {
+                listFotosP.push(listFotoProductos[j].image);
+              }
+            }
+            let producto = {
+              "id": productos[i].id,
+              "nombre": productos[i].nombre,
+              "precio": productos[i].precio,
+              "color": productos[i].color,
+              "marca": productos[i].marca,
+              "genero": productos[i].genero,
+              "disponibles": productos[i].disponible,
+              "fotos": listFotosP
+            };
+            this.listProductos.push(producto);
+            listFotosP = []; // Reinicia la lista para el próximo producto
+          }
+        },
+        error => {
+          // Manejo de errores si es necesario
+          console.error(error);
+        }
+      );
+    }
+
     console.log("los productos sin auto: "+this.listProductos)
   }
 }

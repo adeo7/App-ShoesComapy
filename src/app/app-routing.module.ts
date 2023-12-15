@@ -27,6 +27,7 @@ import { PqrsFormComponent } from './Shared/pqrs-form/pqrs-form.component';
 import { RolGuard } from './Core/Rol.guard';
 import { RegistrarLocalComponent } from './Shared/registrar-local/registrar-local.component';
 import { RecuperarPasswordComponent } from './Shared/recuperar-password/recuperar-password.component';
+import { RespuestaPqrsComponent } from './Modules/Comprador/comprador-informacion/respuesta-pqrs/respuesta-pqrs.component';
 
 const routes: Routes = [
   {
@@ -59,7 +60,8 @@ const routes: Routes = [
     children: [
       { path: '', component: InformacionCompradorComponent },
       { path: 'informacion', component: InformacionCompradorComponent },
-      { path: 'cambiar', component: CambiarPasswordComponent }
+      { path: 'cambiar', component: CambiarPasswordComponent },
+      { path: 'pqr', component: RespuestaPqrsComponent }
     ]
   },
   { path: 'carrito', component: CarritoComponent },

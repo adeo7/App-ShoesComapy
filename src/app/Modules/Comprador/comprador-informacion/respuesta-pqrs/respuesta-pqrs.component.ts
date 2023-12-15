@@ -14,7 +14,6 @@ export class RespuestaPqrsComponent {
 
   listPqrs: any[] = []
   listPqrsRespuesta: any[] = []
-  listPqrstipo: any[] = []
   pqr:any
   usuario:any
   local:any
@@ -34,13 +33,13 @@ export class RespuestaPqrsComponent {
     this.obtenerinfo();
   }
   getlist() {
+    let pqr:any[]=[]
     forkJoin([
-      this.service.getAll(),
       this.serviceRespuesta.getAll(),
     ]).subscribe(
-      ([result, respuestaResult]) => {
-        this.listPqrs = result;
-        this.listPqrsRespuesta = respuestaResult;
+      ([result]) => {
+       this.listPqrsRespuesta=result
+       console.log(this.listPqrsRespuesta)
       },
       error => {
         console.error(error);
@@ -48,7 +47,7 @@ export class RespuestaPqrsComponent {
   }
 
   ver(id:any){
-    this.service.getById(id).subscribe(result=>{
+    this.serviceRespuesta.getById(id).subscribe(result=>{
       this.pqr=result
     })
   }
