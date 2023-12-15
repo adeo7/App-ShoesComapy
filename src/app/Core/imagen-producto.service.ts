@@ -16,13 +16,16 @@ export class ImagenProductoService {
    getAll() {
     return this.Http.get<any>(this.urlBase,{ headers :this.httpHeader })
   }
-  save(data:any,id:any) {
-    if (id!=0 ) {
-      return this.Http.put<any>(this.urlBase + '/'+ id,data,{headers :this.httpHeader})  
-    }else{
-      return this.Http.post<any>(this.urlBase,data,{headers :this.httpHeader})
-    }
+  saveimagen(data:any) {
+    return this.Http.post<any>(this.urlBase,data)
    
+  }
+  save(data:any) {
+    return this.Http.post<any>(this.urlBase,data,{headers :this.httpHeader})
+   
+  }
+  editar(data:any, id:any){
+    return this.Http.put<any>(this.urlBase + '/'+ id,data,{headers :this.httpHeader}) 
   }
 
   getById(id:number) {

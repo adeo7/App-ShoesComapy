@@ -21,7 +21,7 @@ export class CompradorProductosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  this.getList();
+  this.ver();
   }
 
 
@@ -40,7 +40,7 @@ export class CompradorProductosComponent implements OnInit {
   verProducto(id: any) {
     this.router.navigateByUrl('producto/' + id)
   }
-  ver(id: any) {
+  ver() {
     let listFotoProductos: any[] = [];
     let listFotosP: any[] = [];
     let productos: any[] = [];
@@ -50,14 +50,14 @@ export class CompradorProductosComponent implements OnInit {
       this.serviceFoto.getAll()
     ]).subscribe(
       ([productosResult, fotosResult]) => {
-        console.log("res: "+productosResult)
+        console.log(productosResult)
         productos = productosResult;
         listFotoProductos = fotosResult;
-
+        console.log(fotosResult)
         for (let i = 0; i < productos.length; i++) {
           for (let j = 0; j < listFotoProductos.length; j++) {
             if (productos[i].id == listFotoProductos[j].producto) {
-              listFotosP.push(listFotoProductos[j].image_path);
+              listFotosP.push(listFotoProductos[j].image);
             }
           }
           let producto = {
@@ -73,6 +73,7 @@ export class CompradorProductosComponent implements OnInit {
           this.listProductos.push(producto);
           listFotosP = []; // Reinicia la lista para el próximo producto
         }
+        console.log(this.listProductos)
       },
       error => {
         // Manejo de errores si es necesario
